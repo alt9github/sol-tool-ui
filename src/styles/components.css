@@ -203,16 +203,12 @@
   border: 1px solid var(--sol-ui-border);
   border-radius: var(--sol-ui-radius-sm);
 }
-.sol-ui-file-list li,
+.sol-ui-file-list li {
+  padding: 3px var(--sol-ui-space-sm);
+  word-break: break-all;
+}
 .sol-ui-change-list li {
   padding: 3px var(--sol-ui-space-sm);
-  border-bottom: 1px solid var(--sol-ui-border);
-}
-.sol-ui-file-list li:last-child,
-.sol-ui-change-list li:last-child {
-  border-bottom: none;
-}
-.sol-ui-change-list li {
   display: grid;
   grid-template-columns: max-content max-content 1fr;
   gap: var(--sol-ui-space-md);

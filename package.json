@@ -1,6 +1,6 @@
 {
   "name": "@alt9github/sol-tool-ui",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Shared React UI components + flow hooks for sol-* tooling stack (P4 / feedback / metadata)",
   "type": "module",
   "main": "src/index.ts",

@@ -1,5 +1,17 @@
 # Changelog
 
+## v0.1.1 (2026-05-14)
+
+Visual regression fix in `<SyncPromptDialog>`'s file-list section.
+
+### Components
+
+- `.sol-ui-file-list li` no longer carries a per-row `border-bottom`. The
+  list still has an outer 1px border via `.sol-ui-file-list`, matching the
+  original ME behaviour (file rows flow without internal separators).
+- `.sol-ui-change-list` keeps its grid layout without per-row borders for
+  consistency. Outer border + grid columns convey structure.
+
 ## v0.1.0 (2026-05-14)
 
 Initial scaffolding — P4 workflow dialogs extracted from a downstream tool so
