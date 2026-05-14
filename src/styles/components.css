@@ -200,8 +200,6 @@
   overflow-y: auto;
   font-family: var(--sol-ui-font-mono);
   font-size: var(--sol-ui-font-size-sm);
-  border: 1px solid var(--sol-ui-border);
-  border-radius: var(--sol-ui-radius-sm);
 }
 .sol-ui-file-list li {
   padding: 3px var(--sol-ui-space-sm);

@@ -1,5 +1,16 @@
 # Changelog
 
+## v0.1.2 (2026-05-14)
+
+Visual regression follow-up — drop the outer border on the sync file/change
+lists.
+
+### Components
+
+- `.sol-ui-file-list` / `.sol-ui-change-list` no longer carry an outer
+  border or border-radius. Lists now flow as plain text against the modal
+  body. `max-height` + scroll still bounds long lists.
+
 ## v0.1.1 (2026-05-14)
 
 Visual regression fix in `<SyncPromptDialog>`'s file-list section.
