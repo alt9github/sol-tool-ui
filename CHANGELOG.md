@@ -1,5 +1,19 @@
 # Changelog
 
+## v0.1.3 (2026-05-14)
+
+File-list wrap fix.
+
+### Components
+
+- `.sol-ui-file-list li` switched from `word-break: break-all` to single-line
+  ellipsis (`white-space: nowrap`, `overflow: hidden`, `text-overflow: ellipsis`).
+  Long paths display in one row; full path remains in the `title` attribute
+  on hover. The JS-side `shorten()` middle-truncation still runs first.
+- `.sol-ui-file-list li` / `.sol-ui-change-list li` lose their horizontal
+  padding so each row uses the list's full width — matches the wider line
+  budget callers had with the previous ME layout.
+
 ## v0.1.2 (2026-05-14)
 
 Visual regression follow-up — drop the outer border on the sync file/change

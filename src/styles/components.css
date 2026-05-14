@@ -202,11 +202,13 @@
   font-size: var(--sol-ui-font-size-sm);
 }
 .sol-ui-file-list li {
-  padding: 3px var(--sol-ui-space-sm);
-  word-break: break-all;
+  padding: 3px 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .sol-ui-change-list li {
-  padding: 3px var(--sol-ui-space-sm);
+  padding: 3px 0;
   display: grid;
   grid-template-columns: max-content max-content 1fr;
   gap: var(--sol-ui-space-md);
