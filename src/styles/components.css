@@ -1,0 +1,249 @@
+/* Component CSS — uses tokens from tokens.css. All classes prefixed with
+ * `sol-ui-` for namespace isolation. */
+
+/* Button */
+.sol-ui-btn {
+  font-family: var(--sol-ui-font);
+  font-size: var(--sol-ui-font-size-md);
+  padding: 6px 12px;
+  border-radius: var(--sol-ui-radius-md);
+  border: 1px solid var(--sol-ui-border-strong);
+  background: var(--sol-ui-bg);
+  color: var(--sol-ui-text);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sol-ui-space-sm);
+  line-height: 1.4;
+  transition: background 120ms, border-color 120ms;
+}
+.sol-ui-btn:hover:not(:disabled) {
+  background: var(--sol-ui-bg-hover);
+}
+.sol-ui-btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+.sol-ui-btn:focus-visible {
+  outline: 2px solid var(--sol-ui-border-focus);
+  outline-offset: 1px;
+}
+.sol-ui-btn--primary {
+  background: var(--sol-ui-primary);
+  border-color: var(--sol-ui-primary);
+  color: var(--sol-ui-text-on-primary);
+}
+.sol-ui-btn--primary:hover:not(:disabled) {
+  background: var(--sol-ui-primary-hover);
+  border-color: var(--sol-ui-primary-hover);
+}
+.sol-ui-btn--text {
+  border-color: transparent;
+  background: transparent;
+}
+.sol-ui-btn--text:hover:not(:disabled) {
+  background: var(--sol-ui-bg-hover);
+}
+.sol-ui-btn--sm {
+  font-size: var(--sol-ui-font-size-sm);
+  padding: 4px 8px;
+}
+
+/* Modal — overlay + dialog */
+.sol-ui-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: var(--sol-ui-bg-overlay);
+  z-index: var(--sol-ui-modal-z);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--sol-ui-space-xl);
+}
+.sol-ui-modal {
+  background: var(--sol-ui-bg);
+  color: var(--sol-ui-text);
+  border-radius: var(--sol-ui-radius-lg);
+  box-shadow: var(--sol-ui-shadow-lg);
+  min-width: var(--sol-ui-modal-min-width);
+  max-width: 100%;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  font-family: var(--sol-ui-font);
+  font-size: var(--sol-ui-font-size-md);
+}
+.sol-ui-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--sol-ui-space-md) var(--sol-ui-space-lg);
+  border-bottom: 1px solid var(--sol-ui-border);
+}
+.sol-ui-modal-title {
+  font-weight: 600;
+  font-size: var(--sol-ui-font-size-lg);
+  margin: 0;
+}
+.sol-ui-modal-body {
+  padding: var(--sol-ui-space-lg);
+  overflow-y: auto;
+  flex: 1;
+}
+.sol-ui-modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--sol-ui-space-sm);
+  padding: var(--sol-ui-space-md) var(--sol-ui-space-lg);
+  border-top: 1px solid var(--sol-ui-border);
+}
+
+/* TextField (label + input) */
+.sol-ui-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sol-ui-space-xs);
+  font-size: var(--sol-ui-font-size-md);
+}
+.sol-ui-field-label {
+  font-size: var(--sol-ui-font-size-sm);
+  color: var(--sol-ui-text-muted);
+}
+.sol-ui-field-input {
+  font: inherit;
+  padding: 6px 8px;
+  border: 1px solid var(--sol-ui-border-strong);
+  border-radius: var(--sol-ui-radius-sm);
+  background: var(--sol-ui-bg);
+  color: var(--sol-ui-text);
+}
+.sol-ui-field-input:focus {
+  outline: 2px solid var(--sol-ui-border-focus);
+  outline-offset: 0;
+  border-color: var(--sol-ui-border-focus);
+}
+
+/* Inline message/error blocks */
+.sol-ui-error {
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  color: var(--sol-ui-error);
+  padding: var(--sol-ui-space-sm) var(--sol-ui-space-md);
+  border-radius: var(--sol-ui-radius-sm);
+  font-size: var(--sol-ui-font-size-sm);
+}
+.sol-ui-hint {
+  color: var(--sol-ui-text-muted);
+  font-size: var(--sol-ui-font-size-sm);
+}
+
+/* Listbox (P4 workspace list) */
+.sol-ui-list {
+  border: 1px solid var(--sol-ui-border);
+  border-radius: var(--sol-ui-radius-md);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.sol-ui-list-header {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr 2fr;
+  gap: var(--sol-ui-space-md);
+  padding: 6px var(--sol-ui-space-md);
+  background: var(--sol-ui-bg-elev);
+  border-bottom: 1px solid var(--sol-ui-border);
+  font-size: var(--sol-ui-font-size-sm);
+  color: var(--sol-ui-text-muted);
+}
+.sol-ui-list-item {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr 2fr;
+  gap: var(--sol-ui-space-md);
+  padding: 6px var(--sol-ui-space-md);
+  cursor: pointer;
+  border-bottom: 1px solid var(--sol-ui-border);
+}
+.sol-ui-list-item:last-child {
+  border-bottom: none;
+}
+.sol-ui-list-item:hover {
+  background: var(--sol-ui-bg-hover);
+}
+.sol-ui-list-item.is-selected {
+  background: var(--sol-ui-bg-selected);
+}
+.sol-ui-list-item.is-matches {
+  font-weight: 500;
+}
+.sol-ui-match-badge {
+  color: var(--sol-ui-success);
+  margin-right: var(--sol-ui-space-xs);
+}
+
+/* Section (for sync prompt sections) */
+.sol-ui-section {
+  margin-bottom: var(--sol-ui-space-lg);
+}
+.sol-ui-section h4 {
+  margin: 0 0 var(--sol-ui-space-sm) 0;
+  font-size: var(--sol-ui-font-size-md);
+  font-weight: 600;
+}
+
+/* File / change lists (sync) */
+.sol-ui-file-list,
+.sol-ui-change-list {
+  list-style: none;
+  margin: var(--sol-ui-space-sm) 0;
+  padding: 0;
+  max-height: 200px;
+  overflow-y: auto;
+  font-family: var(--sol-ui-font-mono);
+  font-size: var(--sol-ui-font-size-sm);
+  border: 1px solid var(--sol-ui-border);
+  border-radius: var(--sol-ui-radius-sm);
+}
+.sol-ui-file-list li,
+.sol-ui-change-list li {
+  padding: 3px var(--sol-ui-space-sm);
+  border-bottom: 1px solid var(--sol-ui-border);
+}
+.sol-ui-file-list li:last-child,
+.sol-ui-change-list li:last-child {
+  border-bottom: none;
+}
+.sol-ui-change-list li {
+  display: grid;
+  grid-template-columns: max-content max-content 1fr;
+  gap: var(--sol-ui-space-md);
+}
+.sol-ui-change-num {
+  color: var(--sol-ui-text-muted);
+}
+.sol-ui-change-user {
+  color: var(--sol-ui-text);
+  font-weight: 500;
+}
+.sol-ui-change-desc {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Binary self-update info block */
+.sol-ui-binary-info {
+  background: var(--sol-ui-bg-elev);
+  padding: var(--sol-ui-space-sm);
+  border-radius: var(--sol-ui-radius-sm);
+  font-family: var(--sol-ui-font-mono);
+  font-size: var(--sol-ui-font-size-sm);
+  white-space: pre-wrap;
+  margin: var(--sol-ui-space-sm) 0;
+}
+
+/* Empty state */
+.sol-ui-empty {
+  color: var(--sol-ui-text-muted);
+  padding: var(--sol-ui-space-lg);
+  text-align: center;
+}

@@ -1,0 +1,57 @@
+/* Design tokens — host application overrides any of these to theme the
+ * shared components without forking. All declarations are :root scoped and
+ * use `--sol-ui-*` prefix so they never collide with host token namespaces.
+ */
+:root {
+  /* Color */
+  --sol-ui-primary: #2563eb;
+  --sol-ui-primary-hover: #1d4ed8;
+  --sol-ui-warn: #f59e0b;
+  --sol-ui-error: #dc2626;
+  --sol-ui-success: #16a34a;
+  --sol-ui-info: #0891b2;
+
+  --sol-ui-bg: #ffffff;
+  --sol-ui-bg-elev: #f9fafb;
+  --sol-ui-bg-overlay: rgba(15, 23, 42, 0.55);
+  --sol-ui-bg-hover: #f3f4f6;
+  --sol-ui-bg-selected: #dbeafe;
+
+  --sol-ui-text: #1f2937;
+  --sol-ui-text-muted: #6b7280;
+  --sol-ui-text-on-primary: #ffffff;
+  --sol-ui-text-link: #2563eb;
+
+  --sol-ui-border: #e5e7eb;
+  --sol-ui-border-strong: #d1d5db;
+  --sol-ui-border-focus: #93c5fd;
+
+  /* Spacing */
+  --sol-ui-space-xs: 4px;
+  --sol-ui-space-sm: 8px;
+  --sol-ui-space-md: 12px;
+  --sol-ui-space-lg: 16px;
+  --sol-ui-space-xl: 24px;
+
+  /* Radius */
+  --sol-ui-radius-sm: 4px;
+  --sol-ui-radius-md: 6px;
+  --sol-ui-radius-lg: 10px;
+
+  /* Shadow */
+  --sol-ui-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.08);
+  --sol-ui-shadow-md: 0 4px 12px rgba(0, 0, 0, 0.15);
+  --sol-ui-shadow-lg: 0 10px 28px rgba(0, 0, 0, 0.22);
+
+  /* Font */
+  --sol-ui-font: system-ui, -apple-system, "Segoe UI", "Apple SD Gothic Neo",
+    "Noto Sans KR", sans-serif;
+  --sol-ui-font-mono: ui-monospace, "SF Mono", "Cascadia Code", Consolas, monospace;
+  --sol-ui-font-size-sm: 12px;
+  --sol-ui-font-size-md: 13px;
+  --sol-ui-font-size-lg: 15px;
+
+  /* Modal */
+  --sol-ui-modal-z: 9000;
+  --sol-ui-modal-min-width: 360px;
+}
