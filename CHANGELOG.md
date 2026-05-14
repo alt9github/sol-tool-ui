@@ -1,5 +1,57 @@
 # Changelog
 
+## v0.2.0 (2026-05-14)
+
+Feedback / Jira components — new peer dep on `zustand` for the bundled crash
+store.
+
+### New components
+
+- **`<ReportDialog>`** — bug / improvement / question submission with optional
+  crash prefill, dedup hint banner (existing `fingerprint:*` label search +
+  inline comment-add), rate-limited submit (5/min), auto-context dump with
+  PII sanitize, area labels. All tool-specific values (`parentBugKey`,
+  `projectKey`, `issueTypeName`, `sourceLabel`, `areaOptions`, `autoContext`
+  callback) inject via `tool: FeedbackToolConfig`. Host supplies invokes
+  (`jiraCreateIssue` etc.) and `onOpenJiraSettings` for the inline auth-fix
+  link.
+- **`<CrashPromptDialog>`** — floating bottom-right prompt listing pending
+  crash records from the shared store. Optional `onReport` hook to drive the
+  host's open-report flow; defaults to setting `useCrashStore.active`.
+- **`<JiraTokenSettings>`** — full Atlassian URL / email / API token entry
+  with auto-verify-on-mount and a five-state verify banner (verifying /
+  valid / invalid / unreachable / keyring-error / idle).
+
+### New stores / utils
+
+- `useCrashStore` (zustand) — fingerprinted crash queue with `push` / `dismiss`
+  / `consume` / `setActive`. `pending` drives `<CrashPromptDialog>`; `active`
+  is the record `<ReportDialog>` prefills when opened.
+- `reportReactCrash(error, componentStack)` — forward from any host
+  `<ErrorBoundary>`.
+- `installCrashListeners()` — attach `window.error` /
+  `window.unhandledrejection` once.
+- `isFrameworkOnlyStack(stack)` — host helper to suppress dev StrictMode +
+  third-party-only stacks.
+- `checkSubmitAllowed / recordSubmit / formatRetryAfter / resetRateLimit` —
+  per-process 5/min rolling window.
+- `redactHomePath / sanitizeContextRecord` — PII redaction for auto-context.
+
+### New types
+
+`CrashRecord / CrashKind / FeedbackToolConfig / JiraConfig / JiraIssuePayload /
+CreatedIssue / JiraIssueSummary / JiraUser / FeedbackInvokes`.
+
+### CSS
+
+Adds `.sol-ui-report-*`, `.sol-ui-dedup-*`, `.sol-ui-crash-prompt-*`,
+`.sol-ui-jira-verify*`, `.sol-ui-auth-warn`, `.sol-ui-success`,
+`.sol-ui-link-btn`, `.sol-ui-kv` classes — all themable via existing tokens.
+
+### Peer dependencies
+
+- `zustand >= 5` (new) — required by the bundled crash store.
+
 ## v0.1.4 (2026-05-14)
 
 Visual parity pass — sync lists + workspace list now match the original ME

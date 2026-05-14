@@ -278,3 +278,308 @@
   padding: var(--sol-ui-space-lg);
   text-align: center;
 }
+
+/* ─── Feedback / ReportDialog / CrashPromptDialog / JiraTokenSettings ─── */
+
+.sol-ui-success {
+  background: #ecfdf5;
+  border: 1px solid #a7f3d0;
+  color: var(--sol-ui-success);
+  padding: var(--sol-ui-space-sm) var(--sol-ui-space-md);
+  border-radius: var(--sol-ui-radius-sm);
+  font-size: var(--sol-ui-font-size-sm);
+}
+
+.sol-ui-auth-warn {
+  background: #fffbeb;
+  border: 1px solid #fde68a;
+  color: #92400e;
+  padding: var(--sol-ui-space-sm) var(--sol-ui-space-md);
+  border-radius: var(--sol-ui-radius-sm);
+  font-size: var(--sol-ui-font-size-sm);
+  margin-bottom: var(--sol-ui-space-md);
+}
+
+.sol-ui-link-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  color: var(--sol-ui-text-link);
+  cursor: pointer;
+  font: inherit;
+  text-decoration: underline;
+}
+.sol-ui-link-btn:hover {
+  text-decoration: none;
+}
+
+.sol-ui-kv {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  column-gap: var(--sol-ui-space-md);
+  row-gap: 6px;
+  margin: 0;
+}
+.sol-ui-kv dt {
+  color: var(--sol-ui-text-muted);
+  font-size: var(--sol-ui-font-size-sm);
+  align-self: center;
+}
+.sol-ui-kv dd {
+  margin: 0;
+  font-size: var(--sol-ui-font-size-md);
+}
+
+/* ReportDialog body */
+.sol-ui-report-body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sol-ui-space-md);
+}
+.sol-ui-report-row {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.sol-ui-report-row > label {
+  font-size: var(--sol-ui-font-size-sm);
+  color: var(--sol-ui-text-muted);
+}
+.sol-ui-report-row input[type="text"],
+.sol-ui-report-row textarea,
+.sol-ui-report-row select {
+  font: inherit;
+  padding: 6px 8px;
+  border: 1px solid var(--sol-ui-border-strong);
+  border-radius: var(--sol-ui-radius-sm);
+  background: var(--sol-ui-bg);
+  color: var(--sol-ui-text);
+}
+.sol-ui-report-row textarea {
+  resize: vertical;
+  font-family: var(--sol-ui-font);
+}
+.sol-ui-report-radio {
+  display: flex;
+  gap: var(--sol-ui-space-md);
+  font-size: var(--sol-ui-font-size-md);
+}
+.sol-ui-report-context-preview {
+  background: var(--sol-ui-bg-elev);
+  padding: var(--sol-ui-space-sm);
+  border-radius: var(--sol-ui-radius-sm);
+  font-family: var(--sol-ui-font-mono);
+  font-size: var(--sol-ui-font-size-sm);
+  white-space: pre-wrap;
+  max-height: 200px;
+  overflow-y: auto;
+}
+.sol-ui-report-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--sol-ui-space-sm);
+  margin-top: var(--sol-ui-space-md);
+}
+
+/* Dedup hint */
+.sol-ui-dedup {
+  background: #fef3c7;
+  border: 1px solid #fcd34d;
+  border-radius: var(--sol-ui-radius-sm);
+  padding: var(--sol-ui-space-md);
+  margin-bottom: var(--sol-ui-space-md);
+  font-size: var(--sol-ui-font-size-sm);
+}
+.sol-ui-dedup-header {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: var(--sol-ui-space-sm);
+}
+.sol-ui-dedup-title {
+  font-weight: 600;
+}
+.sol-ui-dedup-meta {
+  color: var(--sol-ui-text-muted);
+  font-size: var(--sol-ui-font-size-sm);
+}
+.sol-ui-dedup-list {
+  list-style: none;
+  margin: 0 0 var(--sol-ui-space-sm) 0;
+  padding: 0;
+}
+.sol-ui-dedup-list li {
+  display: flex;
+  gap: var(--sol-ui-space-sm);
+  align-items: baseline;
+  padding: 2px 0;
+}
+.sol-ui-dedup-status {
+  color: var(--sol-ui-text-muted);
+  font-family: var(--sol-ui-font-mono);
+  font-size: var(--sol-ui-font-size-sm);
+}
+.sol-ui-dedup-summary {
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.sol-ui-dedup-comment {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: var(--sol-ui-space-sm);
+}
+.sol-ui-dedup-comment textarea {
+  font: inherit;
+  padding: 6px 8px;
+  border: 1px solid var(--sol-ui-border-strong);
+  border-radius: var(--sol-ui-radius-sm);
+  background: var(--sol-ui-bg);
+}
+.sol-ui-dedup-searching {
+  color: var(--sol-ui-text-muted);
+  font-size: var(--sol-ui-font-size-sm);
+  margin-bottom: var(--sol-ui-space-md);
+}
+
+/* CrashPromptDialog (auto-floating, smaller than full modal) */
+.sol-ui-crash-prompt-overlay {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  z-index: var(--sol-ui-modal-z);
+  max-width: 480px;
+  width: calc(100% - 32px);
+}
+.sol-ui-crash-prompt {
+  background: var(--sol-ui-bg);
+  border: 1px solid var(--sol-ui-border-strong);
+  border-radius: var(--sol-ui-radius-md);
+  box-shadow: var(--sol-ui-shadow-lg);
+  padding: var(--sol-ui-space-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sol-ui-space-sm);
+  max-height: 60vh;
+  overflow-y: auto;
+}
+.sol-ui-crash-prompt-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--sol-ui-border);
+  padding-bottom: var(--sol-ui-space-sm);
+}
+.sol-ui-crash-prompt-header h3 {
+  margin: 0;
+  font-size: var(--sol-ui-font-size-md);
+  font-weight: 600;
+  color: var(--sol-ui-error);
+}
+.sol-ui-crash-prompt-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sol-ui-space-sm);
+}
+.sol-ui-crash-prompt-item {
+  border: 1px solid var(--sol-ui-border);
+  border-radius: var(--sol-ui-radius-sm);
+  padding: var(--sol-ui-space-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.sol-ui-crash-prompt-meta {
+  display: flex;
+  gap: var(--sol-ui-space-sm);
+  align-items: center;
+  font-size: var(--sol-ui-font-size-sm);
+}
+.sol-ui-crash-prompt-kind {
+  font-weight: 600;
+  padding: 1px 6px;
+  border-radius: 3px;
+  font-size: 11px;
+  background: var(--sol-ui-bg-elev);
+  color: var(--sol-ui-text-muted);
+}
+.sol-ui-crash-prompt-kind--react {
+  background: #dbeafe;
+  color: #1e40af;
+}
+.sol-ui-crash-prompt-kind--window {
+  background: #fef3c7;
+  color: #92400e;
+}
+.sol-ui-crash-prompt-kind--unhandledrejection {
+  background: #fce7f3;
+  color: #9d174d;
+}
+.sol-ui-crash-prompt-count {
+  color: var(--sol-ui-error);
+  font-weight: 600;
+}
+.sol-ui-crash-prompt-time {
+  color: var(--sol-ui-text-muted);
+  margin-left: auto;
+}
+.sol-ui-crash-prompt-message code {
+  font-family: var(--sol-ui-font-mono);
+  font-size: var(--sol-ui-font-size-sm);
+  word-break: break-word;
+}
+.sol-ui-crash-prompt-stack {
+  background: var(--sol-ui-bg-elev);
+  padding: var(--sol-ui-space-sm);
+  border-radius: var(--sol-ui-radius-sm);
+  font-family: var(--sol-ui-font-mono);
+  font-size: 11px;
+  white-space: pre-wrap;
+  max-height: 200px;
+  overflow-y: auto;
+}
+.sol-ui-crash-prompt-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--sol-ui-space-sm);
+}
+
+/* JiraTokenSettings */
+.sol-ui-jira-settings {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sol-ui-space-md);
+}
+.sol-ui-jira-verify {
+  padding: var(--sol-ui-space-sm) var(--sol-ui-space-md);
+  border-radius: var(--sol-ui-radius-sm);
+  font-size: var(--sol-ui-font-size-sm);
+  border: 1px solid var(--sol-ui-border);
+}
+.sol-ui-jira-verify--verifying {
+  background: var(--sol-ui-bg-elev);
+  color: var(--sol-ui-text-muted);
+}
+.sol-ui-jira-verify--valid {
+  background: #ecfdf5;
+  border-color: #a7f3d0;
+  color: #166534;
+}
+.sol-ui-jira-verify--invalid {
+  background: #fef2f2;
+  border-color: #fecaca;
+  color: var(--sol-ui-error);
+}
+.sol-ui-jira-verify--unreachable {
+  background: #fffbeb;
+  border-color: #fde68a;
+  color: #92400e;
+}
+.sol-ui-jira-verify--idle {
+  background: var(--sol-ui-bg-elev);
+  color: var(--sol-ui-text-muted);
+}
