@@ -137,34 +137,41 @@
   font-size: var(--sol-ui-font-size-sm);
 }
 
-/* Listbox (P4 workspace list) */
+/* Listbox (P4 workspace list)
+ *
+ * Mirrors ME `.p4-conn-list`:
+ *   · outer 1px border + radius-sm (no rounding clip — sticky header needs
+ *     a non-clipping wrapper, so `overflow` is on the list itself).
+ *   · 3-column grid `1.4fr 1fr 2.5fr` (name / stream / root).
+ *   · header is sticky during long-scroll.
+ *   · list items have no separator between them — selection is conveyed by
+ *     background tint, matches by font-weight + green badge.
+ */
 .sol-ui-list {
   border: 1px solid var(--sol-ui-border);
-  border-radius: var(--sol-ui-radius-md);
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
+  border-radius: var(--sol-ui-radius-sm);
+  max-height: 280px;
+  overflow-y: auto;
+  background: var(--sol-ui-bg);
 }
-.sol-ui-list-header {
-  display: grid;
-  grid-template-columns: 1.2fr 1fr 2fr;
-  gap: var(--sol-ui-space-md);
-  padding: 6px var(--sol-ui-space-md);
-  background: var(--sol-ui-bg-elev);
-  border-bottom: 1px solid var(--sol-ui-border);
-  font-size: var(--sol-ui-font-size-sm);
-  color: var(--sol-ui-text-muted);
-}
+.sol-ui-list-header,
 .sol-ui-list-item {
   display: grid;
-  grid-template-columns: 1.2fr 1fr 2fr;
-  gap: var(--sol-ui-space-md);
-  padding: 6px var(--sol-ui-space-md);
-  cursor: pointer;
-  border-bottom: 1px solid var(--sol-ui-border);
+  grid-template-columns: 1.4fr 1fr 2.5fr;
+  gap: 8px;
+  padding: 4px 8px;
+  font-size: var(--sol-ui-font-size-sm);
 }
-.sol-ui-list-item:last-child {
-  border-bottom: none;
+.sol-ui-list-header {
+  font-weight: 600;
+  color: var(--sol-ui-text-muted);
+  background: var(--sol-ui-bg-elev);
+  border-bottom: 1px solid var(--sol-ui-border);
+  position: sticky;
+  top: 0;
+}
+.sol-ui-list-item {
+  cursor: pointer;
 }
 .sol-ui-list-item:hover {
   background: var(--sol-ui-bg-hover);
@@ -172,8 +179,8 @@
 .sol-ui-list-item.is-selected {
   background: var(--sol-ui-bg-selected);
 }
-.sol-ui-list-item.is-matches {
-  font-weight: 500;
+.sol-ui-list-item.is-matches > :first-child {
+  font-weight: 600;
 }
 .sol-ui-match-badge {
   color: var(--sol-ui-success);
@@ -191,36 +198,64 @@
 }
 
 /* File / change lists (sync) */
+/* Sync file/change lists — outer border + subtle elevated background +
+ * inner padding. Mirrors the ME original (slate-50 bg + slate-200 1px
+ * border). Tokens are themable via host overrides. */
 .sol-ui-file-list,
 .sol-ui-change-list {
   list-style: none;
-  margin: var(--sol-ui-space-sm) 0;
-  padding: 0;
-  max-height: 200px;
+  margin: var(--sol-ui-space-xs) 0;
+  padding: 6px 8px;
+  background: var(--sol-ui-bg-elev);
+  border: 1px solid var(--sol-ui-border);
+  border-radius: var(--sol-ui-radius-sm);
+  max-height: 220px;
   overflow-y: auto;
   font-family: var(--sol-ui-font-mono);
   font-size: var(--sol-ui-font-size-sm);
+  line-height: 1.6;
 }
+.sol-ui-change-list {
+  max-height: 260px;
+  line-height: 1.7;
+}
+
 .sol-ui-file-list li {
-  padding: 3px 0;
+  padding: 0;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
 .sol-ui-change-list li {
-  padding: 3px 0;
   display: grid;
-  grid-template-columns: max-content max-content 1fr;
-  gap: var(--sol-ui-space-md);
+  /* 16ch (Change NNNNNNN) / 10ch (user) / 1fr (description ellipsis).
+   * 16ch comes from observation in CJK locales where "Change 207421" wraps
+   * at narrower column widths than monospace alone would suggest. */
+  grid-template-columns: 16ch 10ch 1fr;
+  column-gap: 8px;
+  align-items: baseline;
+  padding: 2px 0;
+  border-bottom: 1px solid var(--sol-ui-border);
+}
+.sol-ui-change-list li:last-child {
+  border-bottom: none;
 }
 .sol-ui-change-num {
-  color: var(--sol-ui-text-muted);
+  font-family: var(--sol-ui-font-mono);
+  color: var(--sol-ui-text);
+  font-weight: 600;
+  white-space: nowrap;
 }
 .sol-ui-change-user {
-  color: var(--sol-ui-text);
-  font-weight: 500;
+  color: var(--sol-ui-text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .sol-ui-change-desc {
+  color: var(--sol-ui-text);
+  min-width: 0;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;

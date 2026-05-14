@@ -1,5 +1,32 @@
 # Changelog
 
+## v0.1.4 (2026-05-14)
+
+Visual parity pass — sync lists + workspace list now match the original ME
+look more closely.
+
+### `<SyncPromptDialog>` lists
+
+- File / change lists regain the outer 1px border + subtle elevated
+  background (`--sol-ui-bg-elev`) + radius + inner padding. Earlier v0.1.1 ~
+  v0.1.3 had stripped these progressively while chasing a different visual
+  regression; this restores the original framed look.
+- File-list `li` keeps single-line ellipsis (no per-row borders).
+- Change-list `li` regains the per-row `border-bottom` separator and a
+  precise grid `16ch / 10ch / 1fr` (Change-num / user / desc). The original
+  ME pinned column widths because CJK monospace widths overflow `max-content`.
+
+### `<P4ConnectionDialog>` workspace list
+
+- Grid columns now `1.4fr / 1fr / 2.5fr` (matches ME), padding `4px 8px`,
+  font-size sm.
+- Header is now `position: sticky; top: 0` so it stays visible while scrolling
+  long workspace lists.
+- List items no longer carry separators between rows — selection is conveyed
+  by `--sol-ui-bg-selected` tint only.
+- `is-matches` weight now applies to the name column only (`>:first-child`),
+  not the entire row. Match badge keeps `--sol-ui-success` green.
+
 ## v0.1.3 (2026-05-14)
 
 File-list wrap fix.
